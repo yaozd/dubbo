@@ -50,6 +50,12 @@ public class Overrides  extends Restful {
     
     public void index(Map<String, Object> context) {
         String service = (String) context.get("service");
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         String application = (String) context.get("application");
         String address = (String) context.get("address");
         List<Override> overrides;

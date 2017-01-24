@@ -46,9 +46,9 @@
 	<td><input type="checkbox" name="ids" value="$service" /></td>
 	<td>
 		#if(! $providerServices.contains($service))
-			<a href="services/$service/consumers">$service</a>
+			<a href="services/$service.replace("/","||")/consumers">$service</a>
 		#else
-			<a href="services/$service/providers">$service</a>
+			<a  href="services/$service.replace("/","||")/providers">$service</a>
 		#end
 	</td>
 	<td>

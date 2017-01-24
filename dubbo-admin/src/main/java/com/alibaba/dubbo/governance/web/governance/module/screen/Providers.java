@@ -75,7 +75,15 @@ public class Providers extends Restful {
     private HttpServletRequest request;
     
     public void index(Provider provider, Map<String, Object> context) {
+
         String service = (String) context.get("service");
+        //TODO:解决服务分组（用group区分）执行查询-产生的404错误。by arvin-2017-01-24
+        // 解决HTTP Status 404 - /governance/services/com.example.dubbo.service-group/Ccom.example.dubbo.service.inf.IProviderServiceInf:1.0.1/providers
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         String application = (String) context.get("application");
         String address = (String)context.get("address");
         

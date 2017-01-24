@@ -135,6 +135,8 @@
 	function fnSearch(){
 		var searchContent = document.getElementById('searchContent');
 	    var keyword = searchContent.value;
+        alert(keyword);
+        keyword=keyword.replace("/","||");
 	    if (keyword.length > 200) {
 	    	showAlert("content maxlength is 200!","searchContent");
 	    	return;
@@ -145,7 +147,7 @@
 	    		|| keyword == '$i18n.get("please.input.address")') {
 	    	keyword = '*';
 	    }
-	    window.location.href = '/governance/' + searchType + '?keyword=' + keyword;
+        window.location.href = '/governance/' + searchType + '?keyword=' + keyword;
 	}
 	function initSearch(){
 		#if($application && ! $service && ! $address)

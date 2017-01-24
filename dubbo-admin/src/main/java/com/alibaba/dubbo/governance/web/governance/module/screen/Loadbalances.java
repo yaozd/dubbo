@@ -38,8 +38,13 @@ public class Loadbalances extends Restful {
     private ProviderService providerService;
 
     public void index(Map<String, Object> context) {
-        final String service = StringUtils.trimToNull((String) context.get("service"));
-        
+        String service = StringUtils.trimToNull((String) context.get("service"));
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         List<LoadBalance> loadbalances;
         if (service != null && service.length() > 0) {
             loadbalances = OverrideUtils.overridesToLoadBalances(overrideService.findByService(service));

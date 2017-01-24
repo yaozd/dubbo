@@ -37,6 +37,12 @@ public class Addresses extends Restful {
     public void index(Map<String, Object> context) {
         String application = (String) context.get("application");
         String service = (String) context.get("service");
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         List<String> providerAddresses = null;
         List<String> consumerAddresses = null;
         

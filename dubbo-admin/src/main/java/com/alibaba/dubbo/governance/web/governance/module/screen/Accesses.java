@@ -48,6 +48,12 @@ public class Accesses extends Restful {
 
     public void index(Map<String, Object> context) throws Exception {
         String service = (String) context.get("service");
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         String address = (String) context.get("address");
         address = Tool.getIP(address);
         List<Route> routes;

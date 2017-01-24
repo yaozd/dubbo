@@ -44,7 +44,13 @@ public class Weights extends Restful {
     private ProviderService providerService;
     
     public void index(Map<String, Object> context) {
-        final String service = StringUtils.trimToNull((String) context.get("service"));
+        String service = StringUtils.trimToNull((String) context.get("service"));
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
         String address = (String) context.get("address");
         address = Tool.getIP(address);
         List<Weight> weights;

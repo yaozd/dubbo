@@ -34,6 +34,12 @@ public class Owners extends Restful {
 	
 	public void index(Map<String, Object> context) {
 		String service = (String) context.get("service");
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
 		List<Owner> owners;
 		if (service != null && service.length() > 0) {
 			owners = ownerService.findByService(service);

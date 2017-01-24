@@ -46,6 +46,12 @@ public class Applications extends Restful {
     
     public void index(Map<String, Object> context) {
     	String service = (String) context.get("service");
+        //-by arvin
+        if(service!=null){
+            service=service.replace("||","/");
+            context.put("service",service);
+        }
+        //
     	if (context.get("service") != null) {
     		Set<String> applications = new TreeSet<String>();
             List<String> providerApplications = providerService.findApplicationsByServiceName(service);
