@@ -14,6 +14,7 @@ import java.lang.reflect.Modifier;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import com.alibaba.dubbo.governance.web.common.utils.ContextUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -49,6 +50,9 @@ public abstract class Restful {
 	protected String currentRegistry = null;
     
     public void execute(Map<String, Object> context) throws Throwable {
+        //-by yzd
+        ContextUtils.replaceServiceValue(context);
+        //
         if(context.get(WebConstants.CURRENT_USER_KEY)!=null){
         	User user = (User) context.get(WebConstants.CURRENT_USER_KEY);
         	currentUser = user;
